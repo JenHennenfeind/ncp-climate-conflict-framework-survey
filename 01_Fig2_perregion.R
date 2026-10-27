@@ -83,7 +83,7 @@ all_regions <- c("Americas",
 
 # this is for later to add to all the counts
 
-## 3.1. Panel B of Figure 1 - studies per region and indicators ####
+## 3.1. Panel b of Figure 2 - studies per region and indicators ####
 
 ### 3.1.1. Conflicts per Region #####
 # Split string of Regions and string of conflict types into several lines
@@ -379,7 +379,7 @@ levels(combined_df$region)
 #------------------------------------------------------------------------------.
 
 
-## 3.2. Panel A - Choropleth map of subregions study frequency ####
+## 3.2. Panel a - Choropleth map of subregions study frequency ####
 
 # depending on what kind of map you want, run this to have global studies depicted
 # all_subregions <- c("Australia and New Zealand", "Central Asia", "Eastern Asia",
@@ -449,7 +449,7 @@ combined_count_sf <- left_join(combined_sf, subregion_count, by = "subregion")
 #------------------------------------------------------------------------------.
 
 
-## 3.4. Panel C data - NCP evidence (measured vs inferred) ####
+## 3.4. Panel c data - NCP evidence (measured vs inferred) ####
 # For each NCP we count how many (paper x NCP) links are directly measured vs
 # inferred from discussion. The evidence class comes from `emp_inter`:
 #   "empirical"      -> Directly measured
@@ -468,7 +468,7 @@ ncp_evidence_clean <- d %>%
   filter(!is.na(evidence), ncp_impact != "Not specified") %>%
   distinct(paper_id, ncp_impact, evidence)
 
-# Rename NCPs into short NCPs with Numbering (same recode as panel B)
+# Rename NCPs into short NCPs with Numbering (same recode as panel b)
 ncp_evidence_clean <- ncp_evidence_clean %>%
   mutate(ncp_impact = case_when(
     ncp_impact == "Habitat creation and maintenance" ~ "NCP 1: Habitat",
@@ -537,7 +537,7 @@ cnt("region"); cnt("type_conflict"); cnt("clim_indicator"); cnt("biome")
 # 4. VISUALIZATION ####
 # =============================================================================.
 
-## 4.1 PANEL B ####.
+## 4.1 PANEL b ####.
 ### Heatmap ####.
 
 bubble_colors <- c("#A0A0A0", "#C99A82", "#C0805F", "#9E5A5A")
@@ -589,8 +589,8 @@ ggsave("Fig_2b_heatmap.png",
 
 
 
-## 4.2. PANEL A ####.
-### Choropleth map with Regions (panel A of figure 1) ####.
+## 4.2. PANEL a ####.
+### Choropleth map with Regions (panel a of Figure 2) ####.
 
 # Plot with rounded Earth effect
 choro_subreg <-
@@ -631,11 +631,11 @@ ggsave("Fig_2a_choro.png",
 
 
 
-## 4.3. PANEL C ####.
+## 4.3. PANEL c ####.
 ### Stacked bar: directly measured vs inferred per NCP ####.
 
 # Two blues, chosen so they do NOT clash with the orange-red count gradient in
-# panels A/B (which encodes a *count*, not evidence type). They also differ in
+# panels a/b (which encodes a *count*, not evidence type). They also differ in
 # lightness, so the panel stays readable under colour-vision deficiency.
 evidence_colors <- c("Directly measured"        = "#1D335F",   # dark blue  = measured
                      "Inferred from discussion"  = "#9DB4D3")   # light blue = inferred
