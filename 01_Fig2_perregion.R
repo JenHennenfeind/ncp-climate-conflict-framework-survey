@@ -1,5 +1,5 @@
 #==============================================================================.
-# Figure 1
+# Figure 2
 # a = Coropleth subregional map of study focus
 # b = heatmap with regions and corresponding number of articles per indicator (conflict, nature, climate, ncps)
 # c = stacked bar: per NCP, how many links are directly measured vs inferred
@@ -280,11 +280,11 @@ ncp_count_perregion <- ncp_count_perregion %>%
   mutate(ncp_impact = case_when(
     ncp_impact == "Habitat creation and maintenance" ~ "NCP 1: Habitat",
     ncp_impact == "Pollination and dispersal of seeds" ~ "NCP 2: Pollination",
-    ncp_impact == "Regulation of air quality" ~ "NCP 3: Air Quality",
+    ncp_impact == "Regulation of air quality" ~ "NCP 3: Air quality",
     ncp_impact == "Regulation of climate" ~ "NCP 4: Climate",
-    ncp_impact == "Regulation of ocean acidification" ~ "NCP 5: Ocean Acidification",
-    ncp_impact == "Regulation of freshwater quantity, location and timing" ~ "NCP 6: Water Quantity",
-    ncp_impact == "Regulation of freshwater and coastal water quality" ~ "NCP 7: Water Quality",
+    ncp_impact == "Regulation of ocean acidification" ~ "NCP 5: Ocean acidification",
+    ncp_impact == "Regulation of freshwater quantity, location and timing" ~ "NCP 6: Water quantity",
+    ncp_impact == "Regulation of freshwater and coastal water quality" ~ "NCP 7: Water quality",
     ncp_impact == "Formation, protection and decontamination of soils" ~ "NCP 8: Soils",
     ncp_impact == "Regulation of hazards and extreme events" ~ "NCP 9: Hazards",
     ncp_impact == "Regulation of organisms detrimental to humans" ~ "NCP 10: Pests",
@@ -305,11 +305,11 @@ ncp_count_perregion <- ncp_count_perregion %>%
 all_ncp_short <- c(
   "NCP 1: Habitat",
   "NCP 2: Pollination",
-  "NCP 3: Air Quality",
+  "NCP 3: Air quality",
   "NCP 4: Climate",
-  "NCP 5: Ocean Acidification",
-  "NCP 6: Water Quantity",
-  "NCP 7: Water Quality",
+  "NCP 5: Ocean acidification",
+  "NCP 6: Water quantity",
+  "NCP 7: Water quality",
   "NCP 8: Soils",
   "NCP 9: Hazards",
   "NCP 10: Pests",
@@ -473,11 +473,11 @@ ncp_evidence_clean <- ncp_evidence_clean %>%
   mutate(ncp_impact = case_when(
     ncp_impact == "Habitat creation and maintenance" ~ "NCP 1: Habitat",
     ncp_impact == "Pollination and dispersal of seeds" ~ "NCP 2: Pollination",
-    ncp_impact == "Regulation of air quality" ~ "NCP 3: Air Quality",
+    ncp_impact == "Regulation of air quality" ~ "NCP 3: Air quality",
     ncp_impact == "Regulation of climate" ~ "NCP 4: Climate",
-    ncp_impact == "Regulation of ocean acidification" ~ "NCP 5: Ocean Acidification",
-    ncp_impact == "Regulation of freshwater quantity, location and timing" ~ "NCP 6: Water Quantity",
-    ncp_impact == "Regulation of freshwater and coastal water quality" ~ "NCP 7: Water Quality",
+    ncp_impact == "Regulation of ocean acidification" ~ "NCP 5: Ocean acidification",
+    ncp_impact == "Regulation of freshwater quantity, location and timing" ~ "NCP 6: Water quantity",
+    ncp_impact == "Regulation of freshwater and coastal water quality" ~ "NCP 7: Water quality",
     ncp_impact == "Formation, protection and decontamination of soils" ~ "NCP 8: Soils",
     ncp_impact == "Regulation of hazards and extreme events" ~ "NCP 9: Hazards",
     ncp_impact == "Regulation of organisms detrimental to humans" ~ "NCP 10: Pests",
@@ -559,8 +559,8 @@ combined_heat <-
   theme_light() +
   labs(x = NULL,
        y = NULL,
-       fill = "Number of Studies",
-       size = "Number of Studies") +
+       fill = "Number of studies",
+       size = "Number of studies") +
   theme(
     panel.grid = element_blank(),
     panel.spacing = unit(1.5, "lines"),
@@ -584,7 +584,7 @@ combined_heat <-
       element_rect(fill = "#7A7570", color = "#7A7570", linewidth = 2)
   )
 
-ggsave("Fig_1B_heatmap.png",
+ggsave("Fig_2b_heatmap.png",
        combined_heat, width = 40, height = 25, dpi = 600)
 
 
@@ -626,7 +626,7 @@ choro_subreg <-
   )
 
 # NOTE: added the missing ".png" extension so the file saves as a real image.
-ggsave("Fig_1A_choro.png",
+ggsave("Fig_2a_choro.png",
        plot = choro_subreg, width = 20, height = 16, dpi = 300)
 
 
@@ -659,13 +659,13 @@ ncp_evidence_bar <-
     legend.key.size = unit(2, "cm")
   )
 
-ggsave("Fig_1C_ncp_evidence.png",
+ggsave("Fig_2c_ncp_evidence.png",
        ncp_evidence_bar, width = 20, height = 20, dpi = 300, bg = "white")
 
 
 
 ## 4.4. Final Figure ####.
-# Layout: A (map) and C (evidence bar) share the top row; B (region x indicator
+# Layout: a (map) and c (evidence bar) share the top row; b (region x indicator
 # heatmap) spans the full width beneath.
 
 top_row <-
@@ -675,20 +675,28 @@ top_row <-
             label_fontface = "bold",
             rel_widths = c(1.5, 1))
 
-Figure_1 <-
+Figure_2 <-
   plot_grid(top_row, combined_heat,
-            labels = c("", "b"),      # top row already labelled A/C
+            labels = c("", "b"),      # top row already labelled a/c
             label_size = 48,
             label_fontface = "bold",
             ncol = 1,
             rel_heights = c(1, 1.3))
 
 # save
-ggsave("Figure_1.tiff",
-       Figure_1,
+ggsave("Figure_2.tiff",
+       Figure_2,
        width = 40,    # match your wider plot
        height = 42,   # extra height for the added top-row bar
        dpi = 300,
+       bg = "white",
+       limitsize = FALSE)
+
+ggsave("Figure_2.eps",
+       Figure_2,
+       width = 40,
+       height = 42,
+       device = "eps",
        bg = "white",
        limitsize = FALSE)
 #------------------------------------------------------------------------------.
