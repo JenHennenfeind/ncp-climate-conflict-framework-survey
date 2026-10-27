@@ -30,7 +30,7 @@ library(here)
 # 2. LOAD DATA ####
 # =============================================================================.
 # Paths are resolved relative to the project root with here(). Put an RStudio
-# .Rproj file (or an empty file named ".here") in the "03 analysis" folder so
+# .Rproj file (or an empty file named ".here") in the project folder so
 # here() anchors there. No setwd() - the script then runs on any machine.
 
 # Data extraction data: make sure you are using the most updated excel!
@@ -625,7 +625,6 @@ choro_subreg <-
     )
   )
 
-# NOTE: added the missing ".png" extension so the file saves as a real image.
 ggsave("Fig_2a_choro.png",
        plot = choro_subreg, width = 20, height = 16, dpi = 300)
 
@@ -634,9 +633,7 @@ ggsave("Fig_2a_choro.png",
 ## 4.3. PANEL c ####.
 ### Stacked bar: directly measured vs inferred per NCP ####.
 
-# Two blues, chosen so they do NOT clash with the orange-red count gradient in
-# panels a/b (which encodes a *count*, not evidence type). They also differ in
-# lightness, so the panel stays readable under colour-vision deficiency.
+# two blues for the evidence type, distinct from the count colours of panels a and b
 evidence_colors <- c("Directly measured"        = "#1D335F",   # dark blue  = measured
                      "Inferred from discussion"  = "#9DB4D3")   # light blue = inferred
 
@@ -686,8 +683,8 @@ Figure_2 <-
 # save
 ggsave("Figure_2.tiff",
        Figure_2,
-       width = 40,    # match your wider plot
-       height = 42,   # extra height for the added top-row bar
+       width = 40,
+       height = 42,
        dpi = 300,
        bg = "white",
        limitsize = FALSE)

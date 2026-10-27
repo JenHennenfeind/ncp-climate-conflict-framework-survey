@@ -1,6 +1,6 @@
 #==============================================================================.
 # Figure 3: NCP - conflict pathway links, split by evidence type.
-# (A) Empirical link   (B) Inferred from discussion.
+# Top: Empirical link.   Bottom: Inferred from discussion.
 #
 # Evidence class is read directly from the extraction template's `emp_inter`
 # column ("empirical" / "interpretative"). Rows are evidence-homogeneous, so
@@ -25,7 +25,7 @@ library(here)      # resolves paths from the project root, no setwd() needed
 # 2. LOAD DATA ####
 # =============================================================================.
 # Paths are resolved relative to the project root with here(). Put an RStudio
-# .Rproj file (or an empty file named ".here") in the "03 analysis" folder so
+# .Rproj file (or an empty file named ".here") in the project folder so
 # here() anchors there. No setwd() - the script then runs on any machine.
 
 d <- read_excel(here("extraction_temp_ANALYSIS_26-07-06.xlsx"))
@@ -183,8 +183,6 @@ ncp_path_split <-
     legend.position  = "none"
   )
 
-# NOTE: fonts/sizes mirror your Figure 2 export (large canvas). Tune width/height
-# if you prefer a tighter panel; dpi 600 for the final version.
 ggsave("Fig_3_ncp_path_split.png",
        ncp_path_split,
        width = 30, height = 34, dpi = 300, bg = "white", limitsize = FALSE)
