@@ -62,9 +62,9 @@ ncp_lookup <- tibble(
                "Physical and psychological experiences",
                "Supporting identities", "Maintenance of options"),
   ncp_num  = 1:18,
-  ncp_short = c("NCP 1: Habitat", "NCP 2: Pollination", "NCP 3: Air Quality",
-                "NCP 4: Climate", "NCP 5: Ocean Acidification", "NCP 6: Water Quantity",
-                "NCP 7: Water Quality", "NCP 8: Soils", "NCP 9: Hazards",
+  ncp_short = c("NCP 1: Habitat", "NCP 2: Pollination", "NCP 3: Air quality",
+                "NCP 4: Climate", "NCP 5: Ocean acidification", "NCP 6: Water quantity",
+                "NCP 7: Water quality", "NCP 8: Soils", "NCP 9: Hazards",
                 "NCP 10: Pests", "NCP 11: Energy", "NCP 12: Food",
                 "NCP 13: Materials", "NCP 14: Medicine", "NCP 15: Learning",
                 "NCP 16: Experience", "NCP 17: Identity", "NCP 18: Options")
@@ -188,5 +188,8 @@ ncp_path_split <-
 ggsave("Fig_3_ncp_path_split.png",
        ncp_path_split,
        width = 30, height = 34, dpi = 300, bg = "white", limitsize = FALSE)
+ggsave("Figure_3.eps",
+       ncp_path_split,
+       width = 30, height = 34, device = "eps", bg = "white", limitsize = FALSE)
 #------------------------------------------------------------------------------.
 
