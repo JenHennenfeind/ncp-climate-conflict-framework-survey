@@ -31,17 +31,17 @@ library(here)
 # Biomes: how should studies coded "All Biomes" (i.e. global studies) be counted?
 #   FALSE = keep "All Biomes" as its own category   <- used in the supplement
 #   TRUE  = expand them into all 15 individual biomes
-# NOTE: this toggle changes the headline number quoted in the Figure 2A caption.
+# this toggle changes the number quoted in the Figure 2a caption.
 #       FALSE -> ~60% of studies cover tropical/subtropical biomes
 #       TRUE  -> ~90%
 EXPAND_ALL_BIOMES <- FALSE
 
 
 # --- Palette, taken from the manuscript figures --------------------------------
-# Count gradient used in Figure 2A/2B and Figure 3 bubbles:
+# Count gradient used in Figure 2a/2b and Figure 3 bubbles:
 #   c("#A0A0A0", "#C99A82", "#C0805F", "#9E5A5A")
 # The blues (#1D335F / #9DB4D3) are reserved for measured vs inferred evidence
-# in Figure 2C, so they are deliberately NOT used here: these bars encode counts.
+# in Figure 2c, so they are deliberately NOT used here: these bars encode counts.
 count_fill  <- "#9E5A5A"   # dark end of the manuscript count gradient
 label_col   <- "white"     # n = labels sit inside the bars
 BASE_SIZE   <- 18
